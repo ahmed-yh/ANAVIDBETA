@@ -1,0 +1,83 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+*.egg
+*.egg-info/
+dist/
+build/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+pip-wheel-metadata/
+share/python-wheels/
+*.manifest
+*.spec
+
+# Virtual Environments
+venv/
+env/
+ENV/
+.venv
+.env
+anavid
+anavid/
+
+
+# PyTorch/ML Models (LARGE FILES - DON'T COMMIT)
+*.pt
+*.pth
+*.onnx
+*.pb
+*.h5
+*.weights
+*.caffemodel
+*.tflite
+
+# YOLO Specific
+yolov8*.pt
+yolov5*.pt
+yolov7*.pt
+runs/
+weights/
+*.yaml
+*.cfg
+
+# Videos and Images (LARGE FILES)
+*.mp4
+*.avi
+*.mov
+*.mkv
+*.flv
+*.wmv
+*.webm
+*.m4v
+*.mpg
+*.mpeg
+*.3gp
+
+# Keep sample videos with instructions instead
+data/input/*.mp4
+data/input/*.avi
+data/input/*.mov
+data/output/*.mp4
+data/output/*.avi
+
+# Allow keeping small sample images if needed
+# *.jpg
+# *.jpeg
+# *.png
+
+# Results/Outputs
+results/*.csv
+results/*.png
+results/*.jpg
+results/*.txt
+data/output/

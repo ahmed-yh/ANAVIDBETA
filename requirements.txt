@@ -1,0 +1,24 @@
+google-adk
+google-genai
+pillow
+requests
+fastapi
+uvicorn[standard]
+python-multipart
+jinja2
+numpy
+python-dotenv
+ ultralytics
+ opencv-python
+ opencv-contrib-python
+numpy
+pandas
+ pillow
+
+filterpy
+scikit-image
+lapx
+
+matplotlib
+seaborn
+python-dotenv

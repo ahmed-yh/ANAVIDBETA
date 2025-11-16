@@ -1,0 +1,230 @@
+{
+  "final_times": {
+    "4": {
+      "original_time": 229.9,
+      "corrected_time": 229.9,
+      "corrections_applied": []
+    },
+    "1": {
+      "original_time": 2.1999999999999993,
+      "corrected_time": 2.1999999999999993,
+      "corrections_applied": []
+    },
+    "15": {
+      "original_time": 12.2,
+      "corrected_time": 12.2,
+      "corrections_applied": []
+    },
+    "17": {
+      "original_time": 60.1,
+      "corrected_time": 60.1,
+      "corrections_applied": []
+    },
+    "31": {
+      "original_time": 1.6000000000000014,
+      "corrected_time": 1.6000000000000014,
+      "corrections_applied": []
+    },
+    "30": {
+      "original_time": 7.799999999999997,
+      "corrected_time": 7.799999999999997,
+      "corrections_applied": []
+    },
+    "38": {
+      "original_time": 74.0,
+      "corrected_time": 74.0,
+      "corrections_applied": []
+    },
+    "40": {
+      "original_time": 81.0,
+      "corrected_time": 81.0,
+      "corrections_applied": []
+    },
+    "52": {
+      "original_time": 3.8000000000000114,
+      "corrected_time": 3.8000000000000114,
+      "corrections_applied": []
+    },
+    "53": {
+      "original_time": 0.0,
+      "corrected_time": 0.0,
+      "corrections_applied": []
+    },
+    "54": {
+      "original_time": 20.30000000000001,
+      "corrected_time": 20.30000000000001,
+      "corrections_applied": []
+    },
+    "55": {
+      "original_time": 36.60000000000002,
+      "corrected_time": 24.2,
+      "corrections_applied": [
+        {
+          "type": "occlusion",
+          "decision": "separate",
+          "confidence": 1.0
+        },
+        {
+          "type": "occlusion",
+          "decision": "separate",
+          "confidence": 1.0
+        }
+      ]
+    },
+    "60": {
+      "original_time": 17.5,
+      "corrected_time": 17.5,
+      "corrections_applied": []
+    },
+    "62": {
+      "original_time": 5.5,
+      "corrected_time": 5.5,
+      "corrections_applied": []
+    },
+    "64": {
+      "original_time": 0.0,
+      "corrected_time": 0.0,
+      "corrections_applied": []
+    },
+    "76": {
+      "original_time": 2.0,
+      "corrected_time": 2.0,
+      "corrections_applied": []
+    },
+    "79": {
+      "original_time": 0.5,
+      "corrected_time": 0.5,
+      "corrections_applied": []
+    },
+    "95": {
+      "original_time": 0.5,
+      "corrected_time": 0.5,
+      "corrections_applied": []
+    },
+    "99": {
+      "original_time": 37.30000000000001,
+      "corrected_time": 37.30000000000001,
+      "corrections_applied": []
+    },
+    "104": {
+      "original_time": 2.0,
+      "corrected_time": 2.0,
+      "corrections_applied": []
+    },
+    "108": {
+      "original_time": 4.099999999999994,
+      "corrected_time": 4.099999999999994,
+      "corrections_applied": []
+    },
+    "111": {
+      "original_time": 6.0,
+      "corrected_time": 6.0,
+      "corrections_applied": []
+    },
+    "116": {
+      "original_time": 3.9000000000000057,
+      "corrected_time": 3.9000000000000057,
+      "corrections_applied": []
+    }
+  },
+  "corrections": [
+    {
+      "confusion_event": {
+        "event_type": "occlusion",
+        "person_id": 55,
+        "frame_number": 2896,
+        "timestamp": 144.8,
+        "context": {
+          "time_hidden": 2.5
+        },
+        "segment_start_frame": 0,
+        "segment_end_frame": 0
+      },
+      "segment_context": {
+        "segment_path": "data/output/segments\\confusion_occlusion_id55_t144.8s.mp4",
+        "confusion_type": "occlusion",
+        "frame_range": {
+          "start": 2796,
+          "center": 2896,
+          "end": 2996
+        },
+        "time_range": {
+          "start": 139.8,
+          "confusion_at": 144.8,
+          "end": 149.8
+        },
+        "ids_involved": [
+          55
+        ],
+        "id_time_data": {
+          "55": {
+            "time_before_confusion": 11.100000000000023,
+            "first_seen": 133.7,
+            "last_seen": 170.3
+          }
+        },
+        "confusion_details": {
+          "time_hidden": 2.5
+        }
+      },
+      "agent_correction": {
+        "confusion_type": "occlusion",
+        "decision": "separate",
+        "reasoning": "ID 55 refers to a single person wearing a hijab and a black and white outfit. This person is occluded by other customers at times, but it is always the same person. Therefore, the times should not be merged with any other ID.",
+        "corrected_times": {
+          "55": 36.6
+        },
+        "confidence": 1.0
+      }
+    },
+    {
+      "confusion_event": {
+        "event_type": "occlusion",
+        "person_id": 55,
+        "frame_number": 3158,
+        "timestamp": 157.9,
+        "context": {
+          "time_hidden": 2.0999999999999943
+        },
+        "segment_start_frame": 0,
+        "segment_end_frame": 0
+      },
+      "segment_context": {
+        "segment_path": "data/output/segments\\confusion_occlusion_id55_t157.9s.mp4",
+        "confusion_type": "occlusion",
+        "frame_range": {
+          "start": 3058,
+          "center": 3158,
+          "end": 3258
+        },
+        "time_range": {
+          "start": 152.9,
+          "confusion_at": 157.9,
+          "end": 162.9
+        },
+        "ids_involved": [
+          55
+        ],
+        "id_time_data": {
+          "55": {
+            "time_before_confusion": 24.200000000000017,
+            "first_seen": 133.7,
+            "last_seen": 170.3
+          }
+        },
+        "confusion_details": {
+          "time_hidden": 2.0999999999999943
+        }
+      },
+      "agent_correction": {
+        "confusion_type": "occlusion",
+        "decision": "separate",
+        "reasoning": "ID 55 is a person wearing a hijab. They are occluded by other customers. The other people are a couple and another woman. They are clearly different people.",
+        "corrected_times": {
+          "55": 24.2
+        },
+        "confidence": 1.0
+      }
+    }
+  ]
+}

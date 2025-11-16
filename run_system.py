@@ -1,6 +1,6 @@
 """
 Main entry point: Run the complete queue intelligence system
-Now uses .env configuration
+FIXED: NumPy int64 JSON serialization error
 """
 
 import os
@@ -13,7 +13,7 @@ from agent import create_segment_analyzer_agent, analyze_confusion_segment
 
 def main():
     """
-    Run complete queue intelligence system with .env configuration
+    Run complete queue intelligence system
     """
     
     print("="*60)
@@ -21,7 +21,11 @@ def main():
     print("="*60)
     
     # Load and validate configuration
+    print("\n" + "="*60)
+    print("📋 CURRENT CONFIGURATION")
+    print("="*60)
     Config.print_config()
+    print("="*60)
     
     if not Config.validate():
         print("\n❌ Configuration errors - please fix .env file")
@@ -41,7 +45,8 @@ def main():
     tracker.process_video(
         VIDEO_PATH,
         output_path=Config.OUTPUT_VIDEO_PATH,
-        show_preview=False
+        fps_limit=10,
+        show_preview=True
     )
     
     tracker.save_results("results/initial_tracking.csv")
@@ -89,33 +94,38 @@ def main():
     
     final_times = {}
     
+    # ✅ FIX: Convert all NumPy types to Python types
     for person_id, track_data in tracker.person_tracks.items():
+        person_id = int(person_id)  # Convert NumPy int64 to Python int
         final_times[person_id] = {
-            'original_time': track_data['last_seen'] - track_data['first_seen'],
-            'corrected_time': track_data['last_seen'] - track_data['first_seen'],
+            'original_time': float(track_data['last_seen'] - track_data['first_seen']),
+            'corrected_time': float(track_data['last_seen'] - track_data['first_seen']),
             'corrections_applied': []
         }
     
     for correction in corrections:
-        corrected_times = correction['agent_correction']['corrected_times']
-        decision = correction['agent_correction']['decision']
+        corrected_times = correction['agent_correction'].get('corrected_times', {})
+        decision = correction['agent_correction'].get('decision', 'separate')
         
         for person_id_str, corrected_time in corrected_times.items():
-            person_id = int(person_id_str)
+            person_id = int(person_id_str)  # Ensure it's Python int
             
             if person_id in final_times:
-                final_times[person_id]['corrected_time'] = corrected_time
+                final_times[person_id]['corrected_time'] = float(corrected_time)
                 final_times[person_id]['corrections_applied'].append({
                     'type': correction['confusion_event']['event_type'],
                     'decision': decision,
-                    'confidence': correction['agent_correction']['confidence']
+                    'confidence': float(correction['agent_correction'].get('confidence', 0))
                 })
     
     os.makedirs("results", exist_ok=True)
     
+    # ✅ FIX: Ensure all keys are Python int, not NumPy int64
+    final_times_clean = {int(k): v for k, v in final_times.items()}
+    
     with open("results/final_corrected_times.json", "w") as f:
         json.dump({
-            'final_times': final_times,
+            'final_times': final_times_clean,
             'corrections': corrections
         }, f, indent=2)
     
@@ -125,7 +135,7 @@ def main():
     print(f"{'='*60}")
     print(f"\nCustomer Times (Corrected):")
     
-    for person_id, data in final_times.items():
+    for person_id, data in sorted(final_times_clean.items()):
         original = data['original_time']
         corrected = data['corrected_time']
         diff = corrected - original

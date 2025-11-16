@@ -1,7 +1,6 @@
 """
 Enhanced Dwell Time Tracker with Confusion Detection
-Tracks people and detects when YOLO gets confused
-Now uses .env configuration file
+FIXED: CSV export (all customers saved), JSON serialization, ID fragmentation
 """
 
 import cv2
@@ -36,7 +35,7 @@ class ConfusionEvent:
 
 
 class DwellTimeTracker:
-    def __init__(self, model_path='yolov8m.pt', disappear_threshold=10.0, exclude_zones=None):
+    def __init__(self, model_path='yolov8m.pt', disappear_threshold=3.0, exclude_zones=None):
         """
         Initialize dwell time tracker with confusion detection
         
@@ -137,18 +136,18 @@ class DwellTimeTracker:
                     new_center = ((new_pos[0]+new_pos[2])/2, (new_pos[1]+new_pos[3])/2)
                     distance = ((old_center[0]-new_center[0])**2 + (old_center[1]-new_center[1])**2)**0.5
                     
-                    if distance < 150:  # pixels - they're close!
+                    if distance < 200:  # pixels
                         confusion_events.append(ConfusionEvent(
                             event_type='id_switch',
-                            person_id=new_id,
-                            frame_number=frame_count,
-                            timestamp=current_time,
+                            person_id=int(new_id),
+                            frame_number=int(frame_count),
+                            timestamp=float(current_time),
                             context={
                                 'old_id': int(old_id), 
                                 'new_id': int(new_id), 
                                 'distance': float(distance),
-                                'old_bbox': old_pos.tolist(),
-                                'new_bbox': new_pos.tolist()
+                                'old_bbox': [float(x) for x in old_pos],
+                                'new_bbox': [float(x) for x in new_pos]
                             }
                         ))
                         print(f"  ⚠️ ID SWITCH: {old_id} → {new_id} (distance: {distance:.0f}px)")
@@ -158,12 +157,12 @@ class DwellTimeTracker:
             if person_id in current_ids:
                 # They're back!
                 time_gone = current_time - self.person_disappeared[person_id]
-                if time_gone < 3.0:  # Short disappearance = occlusion
+                if 2.0 < time_gone < 8.0:  # Only 2-8 seconds = real occlusion
                     confusion_events.append(ConfusionEvent(
                         event_type='occlusion',
                         person_id=int(person_id),
-                        frame_number=frame_count,
-                        timestamp=current_time,
+                        frame_number=int(frame_count),
+                        timestamp=float(current_time),
                         context={'time_hidden': float(time_gone)}
                     ))
                     print(f"  ⚠️ OCCLUSION: Person {person_id} hidden for {time_gone:.1f}s")
@@ -176,8 +175,8 @@ class DwellTimeTracker:
                     confusion_events.append(ConfusionEvent(
                         event_type='return_after_leave',
                         person_id=int(person_id),
-                        frame_number=frame_count,
-                        timestamp=current_time,
+                        frame_number=int(frame_count),
+                        timestamp=float(current_time),
                         context={'time_away': float(time_gone)}
                     ))
                     print(f"  ⚠️ RETURN: Person {person_id} came back after {time_gone:.1f}s")
@@ -190,7 +189,7 @@ class DwellTimeTracker:
         
         return confusion_events
         
-    def process_video(self, video_path, output_path=None, fps_limit=30, show_preview=True):
+    def process_video(self, video_path, output_path=None, fps_limit=5, show_preview=True):
         """
         Process video and track dwell time for all people
         """
@@ -239,13 +238,13 @@ class DwellTimeTracker:
             
             current_time = frame_count / fps
             
-            # Run YOLO detection with tracking
+            # Run YOLO detection with improved parameters
             results = self.model.track(
                 frame, 
                 persist=True,
                 classes=[0],
-                conf=0.4,
-                iou=0.5,
+                conf=0.7,   # High confidence to reduce noise
+                iou=0.7,    # High IOU for stable tracking
                 verbose=False,
                 device=self.device
             )
@@ -258,9 +257,15 @@ class DwellTimeTracker:
                 track_ids = results[0].boxes.id.cpu().numpy().astype(int)
                 confidences = results[0].boxes.conf.cpu().numpy()
                 
-                # Collect current IDs (excluding workers)
+                # Collect current IDs (excluding workers and small boxes)
                 current_ids_list = []
                 for box, track_id, conf in zip(boxes, track_ids, confidences):
+                    # Filter small detections (noise)
+                    x1, y1, x2, y2 = box
+                    box_area = (x2 - x1) * (y2 - y1)
+                    if box_area < 8000:  # Adjust for 2560x1440 resolution
+                        continue
+                    
                     is_worker = self.is_in_exclude_zone(box)
                     if not is_worker:
                         visible_ids_this_frame.add(track_id)
@@ -274,6 +279,12 @@ class DwellTimeTracker:
                 
                 # Normal tracking processing
                 for box, track_id, conf in zip(boxes, track_ids, confidences):
+                    
+                    # Filter small detections
+                    x1, y1, x2, y2 = box
+                    box_area = (x2 - x1) * (y2 - y1)
+                    if box_area < 8000:
+                        continue
                     
                     is_worker = self.is_in_exclude_zone(box)
                     
@@ -314,7 +325,7 @@ class DwellTimeTracker:
                     
                     if track_id in self.person_disappeared:
                         disappear_duration = current_time - self.person_disappeared[track_id]
-                        if disappear_duration < self.disappear_threshold:
+                        if disappear_duration > 1.0:
                             print(f"[{current_time:.1f}s] Customer {track_id} reappeared after {disappear_duration:.1f}s")
                         del self.person_disappeared[track_id]
                     
@@ -398,24 +409,25 @@ class DwellTimeTracker:
                     cv2.namedWindow("Dwell Time Tracking", cv2.WINDOW_NORMAL)
                     cv2.resizeWindow("Dwell Time Tracking", 1280, 720)
                     cv2.imshow("Dwell Time Tracking", frame)
-                    if cv2.waitKey(33) & 0xFF == ord('q'):
+                    if cv2.waitKey(1) & 0xFF == ord('q'):
                         break
             
             # Progress update
-            if frame_count % 100 == 0:
+            if frame_count % 200 == 0:
                 elapsed = time.time() - start_time
                 fps_processing = frame_count / elapsed
                 progress = (frame_count / total_frames) * 100
-                print(f"Progress: {progress:.1f}% ({frame_count}/{total_frames}) - {fps_processing:.1f} fps")
+                print(f"Progress: {progress:.1f}% ({frame_count}/{total_frames}) - {fps_processing:.1f} fps - Active: {len(self.active_ids)}")
         
-        # Process people still visible at end
+        # ✅ CRITICAL FIX: Process ALL people at end of video
         final_time = total_frames / fps
+        
+        # 1. People still actively visible
         for track_id in self.active_ids:
             if track_id in self.person_first_seen:
                 total_time = final_time - self.person_first_seen[track_id]
                 self.person_total_time[track_id] = total_time
                 
-                # UPDATE PERSON_TRACKS for people still visible
                 self.person_tracks[track_id]['last_seen'] = final_time
                 self.person_tracks[track_id]['total_time'] = total_time
                 
@@ -428,6 +440,26 @@ class DwellTimeTracker:
                 })
                 
                 print(f"[END] Customer {track_id} still visible - Total time: {total_time:.1f}s")
+        
+        # 2. ✅ FIX: People who disappeared but never reached disappear_threshold
+        for track_id in list(self.person_disappeared.keys()):
+            if track_id in self.person_first_seen:
+                # Check if not already saved
+                if track_id not in [r['person_id'] for r in self.results_data]:
+                    total_time = self.person_last_seen[track_id] - self.person_first_seen[track_id]
+                    self.person_total_time[track_id] = total_time
+                    
+                    self.person_tracks[track_id]['total_time'] = total_time
+                    
+                    self.results_data.append({
+                        'person_id': track_id,
+                        'first_seen': self.person_first_seen[track_id],
+                        'last_seen': self.person_last_seen[track_id],
+                        'total_time': total_time,
+                        'status': 'disappeared'
+                    })
+                    
+                    print(f"[END] Customer {track_id} disappeared - Total time: {total_time:.1f}s")
         
         # Cleanup
         cap.release()
@@ -442,8 +474,10 @@ class DwellTimeTracker:
         print(f"{'='*60}")
         print(f"Total customers tracked: {len(self.person_first_seen)}")
         print(f"Workers identified: {len(self.worker_ids)}")
-        print(f"Customers who exited: {len([r for r in self.results_data if r['status'] == 'exited'])}")
-        print(f"Customers still visible: {len([r for r in self.results_data if r['status'] == 'still_visible'])}")
+        print(f"Customers saved to CSV: {len(self.results_data)}")
+        print(f"  - Exited: {len([r for r in self.results_data if r['status'] == 'exited'])}")
+        print(f"  - Still visible: {len([r for r in self.results_data if r['status'] == 'still_visible'])}")
+        print(f"  - Disappeared: {len([r for r in self.results_data if r['status'] == 'disappeared'])}")
         
         # CONFUSION REPORT
         print(f"\n{'='*60}")
@@ -457,16 +491,19 @@ class DwellTimeTracker:
         for event_type, count in confusion_summary.items():
             print(f"  {event_type}: {count}")
         
-        print(f"\nDetailed Confusion Log:")
-        for event in self.confusion_events:
-            print(f"  [{event.timestamp:.1f}s] {event.event_type} - Person {event.person_id}")
+        if len(self.confusion_events) > 0:
+            print(f"\nDetailed Confusion Log:")
+            for event in self.confusion_events[:10]:  # Show max 10
+                print(f"  [{event.timestamp:.1f}s] {event.event_type} - Person {event.person_id}")
+            if len(self.confusion_events) > 10:
+                print(f"  ... and {len(self.confusion_events) - 10} more")
         print(f"{'='*60}\n")
         
         if self.results_data:
             avg_time = np.mean([r['total_time'] for r in self.results_data])
             max_time = np.max([r['total_time'] for r in self.results_data])
             min_time = np.min([r['total_time'] for r in self.results_data])
-            print(f"\nDwell Time Statistics (Customers Only):")
+            print(f"\nDwell Time Statistics (All Customers):")
             print(f"  Average: {avg_time:.1f}s ({avg_time/60:.1f} minutes)")
             print(f"  Maximum: {max_time:.1f}s ({max_time/60:.1f} minutes)")
             print(f"  Minimum: {min_time:.1f}s ({min_time/60:.1f} minutes)")
@@ -487,6 +524,7 @@ class DwellTimeTracker:
         
         df.to_csv(output_csv, index=False)
         print(f"✅ Results saved to {output_csv}")
+        print(f"   Total rows: {len(df)}")
         return df
     
     def save_confusion_report(self, output_json='results/confusion_report.json'):
@@ -553,7 +591,7 @@ if __name__ == "__main__":
     tracker.process_video(
         VIDEO_PATH, 
         output_path=Config.OUTPUT_VIDEO_PATH,
-        fps_limit=5,
+        fps_limit=10,
         show_preview=True
     )
     
@@ -563,5 +601,5 @@ if __name__ == "__main__":
     
     # Display results
     if df is not None and len(df) > 0:
-        print("\n=== TOP 10 LONGEST DWELL TIMES ===")
-        print(df[['person_id', 'total_time', 'total_time_minutes', 'status']].head(10).to_string(index=False))
+        print("\n=== ALL CUSTOMER DWELL TIMES ===")
+        print(df[['person_id', 'total_time', 'total_time_minutes', 'status']].to_string(index=False))

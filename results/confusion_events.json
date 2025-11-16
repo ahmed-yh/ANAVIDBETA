@@ -1,0 +1,27 @@
+{
+  "total_confusions": 2,
+  "events": [
+    {
+      "event_type": "occlusion",
+      "person_id": 55,
+      "frame_number": 2896,
+      "timestamp": 144.8,
+      "context": {
+        "time_hidden": 2.5
+      },
+      "segment_start_frame": 0,
+      "segment_end_frame": 0
+    },
+    {
+      "event_type": "occlusion",
+      "person_id": 55,
+      "frame_number": 3158,
+      "timestamp": 157.9,
+      "context": {
+        "time_hidden": 2.0999999999999943
+      },
+      "segment_start_frame": 0,
+      "segment_end_frame": 0
+    }
+  ]
+}

@@ -12,7 +12,9 @@ import pandas as pd
 import plotly.graph_objects as go
 import streamlit as st
 
-DEMO_DATA_DIR = Path("demo_data")
+# Anchored to this file's location (not cwd) since Streamlit Community Cloud
+# runs the app from this subdirectory (demo/) but demo_data/ lives at the repo root.
+DEMO_DATA_DIR = Path(__file__).resolve().parent.parent / "demo_data"
 
 st.set_page_config(
     page_title="Queue Intelligence — Live Demo",

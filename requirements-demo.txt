@@ -1,5 +1,0 @@
-# Minimal dependencies for demo_app.py: it only replays precomputed
-# demo_data/ (video, JSON, CSV) - no YOLO, no Gemini API, no GPU needed.
-streamlit==1.51.0
-pandas==2.3.3
-plotly==6.5.0

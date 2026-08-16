@@ -88,6 +88,6 @@ results/*.jpg
 results/*.txt
 data/output/
 
-# Demo data IS meant to be committed - it's what gets hosted (see demo_app.py)
+# Demo data IS meant to be committed - it's what gets hosted (see demo/demo_app.py)
 !demo_data/
 !demo_data/**

@@ -4,27 +4,51 @@ Configuration manager - Loads settings from .env file
 
 import os
 import json
+import logging
+import tempfile
 from typing import List, Tuple
 from dotenv import load_dotenv
 
 # Load .env file
 load_dotenv()
 
+logger = logging.getLogger(__name__)
+
 
 class Config:
     """Configuration manager for the queue intelligence system"""
-    
+
     # Google API Key
     GOOGLE_API_KEY = os.getenv('GOOGLE_API_KEY', '')
-    
+
     # Video paths
-    VIDEO_PATH = os.getenv('VIDEO_PATH', 'data/input/store_video.mp4')
+    VIDEO_PATH = os.getenv('VIDEO_PATH', 'data/input/result3.mp4')
     OUTPUT_VIDEO_PATH = os.getenv('OUTPUT_VIDEO_PATH', 'data/output/tracked_dwell.mp4')
-    
+
     # YOLO configuration
     YOLO_MODEL = os.getenv('YOLO_MODEL', 'yolov8m.pt')
     DISAPPEAR_THRESHOLD = float(os.getenv('DISAPPEAR_THRESHOLD', '10.0'))
-    
+    FPS_LIMIT = int(os.getenv('FPS_LIMIT', '15'))
+    YOLO_CONF = float(os.getenv('YOLO_CONF', '0.4'))
+    YOLO_IOU = float(os.getenv('YOLO_IOU', '0.5'))
+    # These are deliberately permissive: every candidate they flag gets a clip
+    # cut and sent to Gemini for a real judgment call - Python's job here is
+    # just to notice "something happened", not to pre-filter what's worth AI
+    # review. Raise them only if API cost/volume becomes a real problem.
+    CONFUSION_MATCH_DISTANCE_PX = float(os.getenv('CONFUSION_MATCH_DISTANCE_PX', '80'))
+    CONFUSION_DEBOUNCE_FRAMES = int(os.getenv('CONFUSION_DEBOUNCE_FRAMES', '2'))
+    OCCLUSION_MIN_HIDDEN_SECONDS = float(os.getenv('OCCLUSION_MIN_HIDDEN_SECONDS', '0.0'))
+
+    # Performance: downscale frames before inference/drawing/writing (YOLO
+    # internally resizes to its own imgsz anyway, so this mostly saves on
+    # frame-read/zone-check/draw/encode overhead, not detection quality).
+    # Set to 0 to disable and process at native resolution.
+    PROCESS_WIDTH = int(os.getenv('PROCESS_WIDTH', '1280'))
+
+    # Tracker: raised track_buffer so brief occlusions in busy scenes don't
+    # immediately spawn a new ID. See trackers/custom_botsort.yaml.
+    TRACKER_CONFIG = os.getenv('TRACKER_CONFIG', 'trackers/custom_botsort.yaml')
+
     # Worker zones
     @staticmethod
     def get_worker_zones() -> List[List[Tuple[int, int]]]:
@@ -42,7 +66,7 @@ class Config:
             ]
             return zones
         except json.JSONDecodeError:
-            print("⚠️ Error parsing WORKER_ZONES from .env, using empty list")
+            logger.warning("Could not parse WORKER_ZONES from .env (invalid JSON); using empty list")
             return []
     
     @staticmethod
@@ -84,11 +108,26 @@ class Config:
         # If WORKER_ZONES wasn't in file, add it
         if not updated:
             new_lines.append(f'\nWORKER_ZONES={zones_json}\n')
-        
-        # Write back to .env
-        with open(env_path, 'w') as f:
-            f.writelines(new_lines)
-        
+
+        # Write atomically: write to a temp file in the same directory, then
+        # replace .env in one step, so a crash mid-write can't corrupt it.
+        env_dir = os.path.dirname(os.path.abspath(env_path)) or '.'
+        fd, tmp_path = tempfile.mkstemp(dir=env_dir, prefix='.env.', suffix='.tmp')
+        try:
+            with os.fdopen(fd, 'w') as f:
+                f.writelines(new_lines)
+            os.replace(tmp_path, env_path)
+        except Exception:
+            if os.path.exists(tmp_path):
+                os.remove(tmp_path)
+            raise
+
+        # load_dotenv() only populates os.environ once at import time and
+        # never overwrites existing keys, so without this, a long-running
+        # process (e.g. Streamlit) would keep reading the OLD zone from
+        # memory even though the file on disk is already correct.
+        os.environ['WORKER_ZONES'] = zones_json
+
         print(f"✅ Worker zones updated in .env file")
     
     @staticmethod

@@ -1,0 +1,572 @@
+{
+  "final_times": {
+    "6": {
+      "original_time": 19.45,
+      "corrected_time": 10.0,
+      "corrections_applied": [
+        {
+          "type": "occlusion",
+          "decision": "MERGE",
+          "same_person": true,
+          "confidence": 0.9,
+          "reasoning": "Person ID 6, wearing a dark jacket with white sleeves and light blue jeans, is standing at the counter from the beginning of the video. At approximately 0:09, another person (unidentified ID) walks from the bottom right of the frame directly in front of ID 6, completely blocking them from view. The video ends at 0:09 with ID 6 still occluded by this other person. There is no visual evidence within this video segment to suggest ID 6 left the area or was replaced by a different person; it is a clear instance of one person being visually blocked by another."
+        }
+      ]
+    },
+    "10": {
+      "original_time": 2.1500000000000004,
+      "corrected_time": 3.2,
+      "corrections_applied": [
+        {
+          "type": "occlusion",
+          "decision": "MERGE",
+          "same_person": true,
+          "confidence": 0.8,
+          "reasoning": "Person ID 10 (wearing a black jacket with 'Louis Vuitton' on the back and light blue jeans) is standing at the counter. At approximately 0:09.0s in the video, another person, wearing a light-colored jacket and a black hat, walks into the frame from the bottom center. This person moves directly in front of ID 10, completely obscuring ID 10 from the camera's view. ID 10 remains occluded until the end of this video segment at 0:09.7s and does not reappear within this specific clip."
+        },
+        {
+          "type": "occlusion",
+          "decision": "MERGE",
+          "same_person": true,
+          "confidence": 1.0,
+          "reasoning": "Person ID 10, wearing a black vest with white sleeves and light blue jeans, was standing at the counter looking at the display items. At approximately 00:08.8s, another person (ID 11, wearing a white top and black skirt) walked from the bottom right of the frame directly in front of ID 10, completely occluding them from view. ID 10 reappeared at approximately 00:09.2s, still in the same position and wearing the same clothes, as ID 11 continued to move past."
+        }
+      ]
+    },
+    "13": {
+      "original_time": 1.8499999999999996,
+      "corrected_time": 2.9,
+      "corrections_applied": [
+        {
+          "type": "occlusion",
+          "decision": "MERGE",
+          "same_person": true,
+          "confidence": 1.0,
+          "reasoning": "Person ID 13, wearing a black jacket with white lettering and light blue jeans, was standing in front of the counter. At approximately 0:05, another person, wearing a dark top and dark pants, walked from the left side of the frame directly in front of ID 13, completely blocking them from view. ID 13 reappeared at approximately 0:07, still in the same position and wearing the same clothes, after the occluding person moved past."
+        },
+        {
+          "type": "occlusion",
+          "decision": "MERGE",
+          "same_person": true,
+          "confidence": 1.0,
+          "reasoning": "Person ID 13 disappears from view at approximately 00:09 in the video. They are occluded by another person (wearing a light-colored jacket and a dark hat) who walks directly in front of ID 13, completely blocking the view. Person ID 13 does not reappear within this specific video segment."
+        },
+        {
+          "type": "occlusion",
+          "decision": "MERGE",
+          "same_person": true,
+          "confidence": 0.9,
+          "reasoning": "Person ID 13, wearing a black and white varsity-style jacket and light blue jeans, is standing at the counter. At approximately 0:08.5s in the video clip, another person (wearing a black top and light-colored skirt/pants, carrying a white bag) walks from the bottom right of the frame directly in front of ID 13. This second person completely blocks ID 13 from view. ID 13 reappears at approximately 0:09.1s as the second person moves past, revealing ID 13 still in the same position and wearing the same clothing."
+        }
+      ]
+    },
+    "18": {
+      "original_time": 4.949999999999999,
+      "corrected_time": 5.0,
+      "corrections_applied": [
+        {
+          "type": "occlusion",
+          "decision": "MERGE",
+          "same_person": true,
+          "confidence": 0.95,
+          "reasoning": "Person ID 18, wearing a black jacket with 'Louis Vuitton' on the back and light blue jeans, is observed standing at the counter from the beginning of the clip. At approximately 00:07, another person (P_occluder) wearing a white top, black skirt, and black hat begins to walk into the frame from the bottom-center. By 00:08, P_occluder has positioned herself directly in front of ID 18, completely obscuring ID 18 from the camera's view. ID 18 does not fully reappear within this video segment, but remains in the same location behind the occluding person, with parts of their clothing (jacket, jeans) still visible. The disappearance is due to being blocked by another person."
+        }
+      ]
+    },
+    "22": {
+      "original_time": 1.4499999999999993,
+      "corrected_time": 9.0,
+      "corrections_applied": [
+        {
+          "type": "occlusion",
+          "decision": "MERGE",
+          "same_person": true,
+          "confidence": 1.0,
+          "reasoning": "Person ID 22, wearing a black and white varsity-style jacket with 'Louis Vuitton' on the back, light blue jeans, and dark shoes, is continuously visible at the counter from the beginning of the video segment (17.0s) to the end (26.0s). They do not disappear from view due to occlusion or any other reason. Therefore, no disappearance or reappearance event, as described in the confusion details, is observed in this video. The person remains stationary at the counter throughout the entire segment."
+        },
+        {
+          "type": "occlusion",
+          "decision": "MERGE",
+          "same_person": true,
+          "confidence": 1.0,
+          "reasoning": "Person ID 22 (wearing a black jacket with 'Louis Vuitton' on the back and light blue jeans) is continuously visible at the counter from 17.0s until the end of the video segment at 26.0s. There is no observed disappearance or reappearance of ID 22 due to occlusion or any other reason within this video segment. The tracking data indicating a disappearance at 18.4s is not supported by visual evidence; ID 22 remained in view throughout the entire segment."
+        },
+        {
+          "type": "occlusion",
+          "decision": "MERGE",
+          "same_person": true,
+          "confidence": 1.0,
+          "reasoning": "Person ID 22 (wearing a black and white varsity jacket, light blue jeans) is continuously visible at the counter from the beginning of the video (17.0s) to the end (26.0s). They do not disappear from view due to any obstruction (such as walking behind a shelf or being blocked by another person) or by leaving the frame. Therefore, no visual occlusion event occurred for ID 22 within this video segment, despite the tracking data indicating a brief disappearance."
+        }
+      ]
+    },
+    "24": {
+      "original_time": 1.5999999999999979,
+      "corrected_time": 27.6,
+      "corrections_applied": [
+        {
+          "type": "occlusion",
+          "decision": "MERGE",
+          "same_person": true,
+          "confidence": 1.0,
+          "reasoning": "Person ID 24, wearing a black and white 'Louis Vuitton' jacket and light blue jeans, was standing at the counter. At approximately 00:02 (20.6s), another person wearing a white top, black skirt, and black head covering walked directly in front of ID 24, causing a brief but significant occlusion. ID 24's lower body was completely obscured, and their upper body was partially obscured. By 00:03 (21.6s), the occluding person had moved past, and ID 24 was fully visible again, still in the same position."
+        },
+        {
+          "type": "occlusion",
+          "decision": "SEPARATE",
+          "same_person": false,
+          "confidence": 1.0,
+          "reasoning": "No person matching the description of ID 24 (disappearing briefly and reappearing) was observed in the provided video segment. Based on the provided tracking data (first seen: 18.6s, last seen before confusion: 20.1s in original recording time), ID 24 should have been visible from approximately 12:39:03.2 to 12:39:04.7 in this clip, then disappeared, and reappeared. However, all individuals visible in the segment remained continuously in view or entered the frame and remained visible until the end of the clip. No individual disappeared and reappeared as described for an occlusion event."
+        }
+      ]
+    }
+  },
+  "corrections": [
+    {
+      "confusion_event": {
+        "event_type": "occlusion",
+        "person_id": 13,
+        "frame_number": 199,
+        "timestamp": 9.95,
+        "context": {
+          "time_hidden": 0.049999999999998934
+        },
+        "segment_start_frame": 0,
+        "segment_end_frame": 0
+      },
+      "ai_analysis": {
+        "confusion_type": "occlusion",
+        "same_person": true,
+        "visual_evidence": "Person ID 13, wearing a black jacket with white lettering and light blue jeans, was standing in front of the counter. At approximately 0:05, another person, wearing a dark top and dark pants, walked from the left side of the frame directly in front of ID 13, completely blocking them from view. ID 13 reappeared at approximately 0:07, still in the same position and wearing the same clothes, after the occluding person moved past.",
+        "corrected_times": {
+          "13": 1.9
+        },
+        "confidence": 1.0
+      },
+      "segment_path": "segments/segment_1.mp4"
+    },
+    {
+      "confusion_event": {
+        "event_type": "occlusion",
+        "person_id": 6,
+        "frame_number": 213,
+        "timestamp": 10.65,
+        "context": {
+          "time_hidden": 0.15000000000000036
+        },
+        "segment_start_frame": 0,
+        "segment_end_frame": 0
+      },
+      "ai_analysis": {
+        "confusion_type": "occlusion",
+        "same_person": true,
+        "visual_evidence": "Person ID 6, wearing a dark jacket with white sleeves and light blue jeans, is standing at the counter from the beginning of the video. At approximately 0:09, another person (unidentified ID) walks from the bottom right of the frame directly in front of ID 6, completely blocking them from view. The video ends at 0:09 with ID 6 still occluded by this other person. There is no visual evidence within this video segment to suggest ID 6 left the area or was replaced by a different person; it is a clear instance of one person being visually blocked by another.",
+        "corrected_times": {
+          "6": 10.0
+        },
+        "confidence": 0.9
+      },
+      "segment_path": "segments/segment_2.mp4"
+    },
+    {
+      "confusion_event": {
+        "event_type": "occlusion",
+        "person_id": 13,
+        "frame_number": 223,
+        "timestamp": 11.15,
+        "context": {
+          "time_hidden": 1.0999999999999996
+        },
+        "segment_start_frame": 0,
+        "segment_end_frame": 0
+      },
+      "ai_analysis": {
+        "confusion_type": "occlusion",
+        "same_person": true,
+        "visual_evidence": "Person ID 13 disappears from view at approximately 00:09 in the video. They are occluded by another person (wearing a light-colored jacket and a dark hat) who walks directly in front of ID 13, completely blocking the view. Person ID 13 does not reappear within this specific video segment.",
+        "corrected_times": {
+          "13": 1.9
+        },
+        "confidence": 1.0
+      },
+      "segment_path": "segments/segment_3.mp4"
+    },
+    {
+      "confusion_event": {
+        "event_type": "occlusion",
+        "person_id": 10,
+        "frame_number": 224,
+        "timestamp": 11.2,
+        "context": {
+          "time_hidden": 1.3499999999999996
+        },
+        "segment_start_frame": 0,
+        "segment_end_frame": 0
+      },
+      "ai_analysis": {
+        "confusion_type": "occlusion",
+        "same_person": true,
+        "visual_evidence": "Person ID 10 (wearing a black jacket with 'Louis Vuitton' on the back and light blue jeans) is standing at the counter. At approximately 0:09.0s in the video, another person, wearing a light-colored jacket and a black hat, walks into the frame from the bottom center. This person moves directly in front of ID 10, completely obscuring ID 10 from the camera's view. ID 10 remains occluded until the end of this video segment at 0:09.7s and does not reappear within this specific clip.",
+        "corrected_times": {
+          "10": 1.5
+        },
+        "confidence": 0.8
+      },
+      "segment_path": "segments/segment_4.mp4"
+    },
+    {
+      "confusion_event": {
+        "event_type": "occlusion",
+        "person_id": 13,
+        "frame_number": 232,
+        "timestamp": 11.6,
+        "context": {
+          "time_hidden": 0.1999999999999993
+        },
+        "segment_start_frame": 0,
+        "segment_end_frame": 0
+      },
+      "ai_analysis": {
+        "confusion_type": "occlusion",
+        "same_person": true,
+        "visual_evidence": "Person ID 13, wearing a black and white varsity-style jacket and light blue jeans, is standing at the counter. At approximately 0:08.5s in the video clip, another person (wearing a black top and light-colored skirt/pants, carrying a white bag) walks from the bottom right of the frame directly in front of ID 13. This second person completely blocks ID 13 from view. ID 13 reappears at approximately 0:09.1s as the second person moves past, revealing ID 13 still in the same position and wearing the same clothing.",
+        "corrected_times": {
+          "13": 2.9
+        },
+        "confidence": 0.9
+      },
+      "segment_path": "segments/segment_5.mp4"
+    },
+    {
+      "confusion_event": {
+        "event_type": "occlusion",
+        "person_id": 10,
+        "frame_number": 233,
+        "timestamp": 11.65,
+        "context": {
+          "time_hidden": 0.34999999999999964
+        },
+        "segment_start_frame": 0,
+        "segment_end_frame": 0
+      },
+      "ai_analysis": {
+        "confusion_type": "occlusion",
+        "same_person": true,
+        "visual_evidence": "Person ID 10, wearing a black vest with white sleeves and light blue jeans, was standing at the counter looking at the display items. At approximately 00:08.8s, another person (ID 11, wearing a white top and black skirt) walked from the bottom right of the frame directly in front of ID 10, completely occluding them from view. ID 10 reappeared at approximately 00:09.2s, still in the same position and wearing the same clothes, as ID 11 continued to move past.",
+        "corrected_times": {
+          "10": 3.2
+        },
+        "confidence": 1.0
+      },
+      "segment_path": "segments/segment_6.mp4"
+    },
+    {
+      "confusion_event": {
+        "event_type": "occlusion",
+        "person_id": 18,
+        "frame_number": 306,
+        "timestamp": 15.3,
+        "context": {
+          "time_hidden": 0.05000000000000071
+        },
+        "segment_start_frame": 0,
+        "segment_end_frame": 0
+      },
+      "ai_analysis": {
+        "confusion_type": "occlusion",
+        "same_person": true,
+        "visual_evidence": "Person ID 18, wearing a black jacket with 'Louis Vuitton' on the back and light blue jeans, is observed standing at the counter from the beginning of the clip. At approximately 00:07, another person (P_occluder) wearing a white top, black skirt, and black hat begins to walk into the frame from the bottom-center. By 00:08, P_occluder has positioned herself directly in front of ID 18, completely obscuring ID 18 from the camera's view. ID 18 does not fully reappear within this video segment, but remains in the same location behind the occluding person, with parts of their clothing (jacket, jeans) still visible. The disappearance is due to being blocked by another person.",
+        "corrected_times": {
+          "18": 5.0
+        },
+        "confidence": 0.95
+      },
+      "segment_path": "segments/segment_7.mp4"
+    },
+    {
+      "confusion_event": {
+        "event_type": "occlusion",
+        "person_id": 22,
+        "frame_number": 350,
+        "timestamp": 17.5,
+        "context": {
+          "time_hidden": 0.1999999999999993
+        },
+        "segment_start_frame": 0,
+        "segment_end_frame": 0
+      },
+      "ai_analysis": {
+        "confusion_type": "occlusion",
+        "same_person": true,
+        "visual_evidence": "Person ID 22, wearing a black and white varsity-style jacket with 'Louis Vuitton' on the back, light blue jeans, and dark shoes, is continuously visible at the counter from the beginning of the video segment (17.0s) to the end (26.0s). They do not disappear from view due to occlusion or any other reason. Therefore, no disappearance or reappearance event, as described in the confusion details, is observed in this video. The person remains stationary at the counter throughout the entire segment.",
+        "corrected_times": {
+          "22": 9.0
+        },
+        "confidence": 1.0
+      },
+      "segment_path": "segments/segment_8.mp4"
+    },
+    {
+      "confusion_event": {
+        "event_type": "occlusion",
+        "person_id": 22,
+        "frame_number": 356,
+        "timestamp": 17.8,
+        "context": {
+          "time_hidden": 0.25
+        },
+        "segment_start_frame": 0,
+        "segment_end_frame": 0
+      },
+      "ai_analysis": {
+        "confusion_type": "occlusion",
+        "same_person": true,
+        "visual_evidence": "Person ID 22 (wearing a black jacket with 'Louis Vuitton' on the back and light blue jeans) is continuously visible at the counter from 17.0s until the end of the video segment at 26.0s. There is no observed disappearance or reappearance of ID 22 due to occlusion or any other reason within this video segment. The tracking data indicating a disappearance at 18.4s is not supported by visual evidence; ID 22 remained in view throughout the entire segment.",
+        "corrected_times": {
+          "22": 9.0
+        },
+        "confidence": 1.0
+      },
+      "segment_path": "segments/segment_9.mp4"
+    },
+    {
+      "confusion_event": {
+        "event_type": "occlusion",
+        "person_id": 22,
+        "frame_number": 369,
+        "timestamp": 18.45,
+        "context": {
+          "time_hidden": 0.5500000000000007
+        },
+        "segment_start_frame": 0,
+        "segment_end_frame": 0
+      },
+      "ai_analysis": {
+        "confusion_type": "occlusion",
+        "same_person": true,
+        "visual_evidence": "Person ID 22 (wearing a black and white varsity jacket, light blue jeans) is continuously visible at the counter from the beginning of the video (17.0s) to the end (26.0s). They do not disappear from view due to any obstruction (such as walking behind a shelf or being blocked by another person) or by leaving the frame. Therefore, no visual occlusion event occurred for ID 22 within this video segment, despite the tracking data indicating a brief disappearance.",
+        "corrected_times": {
+          "22": 9.0
+        },
+        "confidence": 1.0
+      },
+      "segment_path": "segments/segment_10.mp4"
+    },
+    {
+      "confusion_event": {
+        "event_type": "occlusion",
+        "person_id": 24,
+        "frame_number": 380,
+        "timestamp": 19.0,
+        "context": {
+          "time_hidden": 0.3999999999999986
+        },
+        "segment_start_frame": 0,
+        "segment_end_frame": 0
+      },
+      "ai_analysis": {
+        "confusion_type": "occlusion",
+        "same_person": true,
+        "visual_evidence": "Person ID 24, wearing a black and white 'Louis Vuitton' jacket and light blue jeans, was standing at the counter. At approximately 00:02 (20.6s), another person wearing a white top, black skirt, and black head covering walked directly in front of ID 24, causing a brief but significant occlusion. ID 24's lower body was completely obscured, and their upper body was partially obscured. By 00:03 (21.6s), the occluding person had moved past, and ID 24 was fully visible again, still in the same position.",
+        "corrected_times": {
+          "24": 27.6
+        },
+        "confidence": 1.0
+      },
+      "segment_path": "segments/segment_11.mp4"
+    },
+    {
+      "confusion_event": {
+        "event_type": "occlusion",
+        "person_id": 24,
+        "frame_number": 402,
+        "timestamp": 20.1,
+        "context": {
+          "time_hidden": 0.05000000000000071
+        },
+        "segment_start_frame": 0,
+        "segment_end_frame": 0
+      },
+      "ai_analysis": {
+        "confusion_type": "occlusion",
+        "same_person": false,
+        "visual_evidence": "No person matching the description of ID 24 (disappearing briefly and reappearing) was observed in the provided video segment. Based on the provided tracking data (first seen: 18.6s, last seen before confusion: 20.1s in original recording time), ID 24 should have been visible from approximately 12:39:03.2 to 12:39:04.7 in this clip, then disappeared, and reappeared. However, all individuals visible in the segment remained continuously in view or entered the frame and remained visible until the end of the clip. No individual disappeared and reappeared as described for an occlusion event.",
+        "corrected_times": {
+          "24": 0.0
+        },
+        "confidence": 1.0
+      },
+      "segment_path": "segments/segment_12.mp4"
+    }
+  ],
+  "ai_analysis_log": [
+    {
+      "confusion_id": 1,
+      "event_type": "occlusion",
+      "person_id": 13,
+      "timestamp": 9.95,
+      "ai_decision": "MERGE",
+      "same_person": true,
+      "ai_confidence": 1.0,
+      "ai_reasoning": "Person ID 13, wearing a black jacket with white lettering and light blue jeans, was standing in front of the counter. At approximately 0:05, another person, wearing a dark top and dark pants, walked from the left side of the frame directly in front of ID 13, completely blocking them from view. ID 13 reappeared at approximately 0:07, still in the same position and wearing the same clothes, after the occluding person moved past.",
+      "visual_evidence": "Person ID 13, wearing a black jacket with white lettering and light blue jeans, was standing in front of the counter. At approximately 0:05, another person, wearing a dark top and dark pants, walked from the left side of the frame directly in front of ID 13, completely blocking them from view. ID 13 reappeared at approximately 0:07, still in the same position and wearing the same clothes, after the occluding person moved past.",
+      "corrected_times": {
+        "13": 1.9
+      }
+    },
+    {
+      "confusion_id": 2,
+      "event_type": "occlusion",
+      "person_id": 6,
+      "timestamp": 10.65,
+      "ai_decision": "MERGE",
+      "same_person": true,
+      "ai_confidence": 0.9,
+      "ai_reasoning": "Person ID 6, wearing a dark jacket with white sleeves and light blue jeans, is standing at the counter from the beginning of the video. At approximately 0:09, another person (unidentified ID) walks from the bottom right of the frame directly in front of ID 6, completely blocking them from view. The video ends at 0:09 with ID 6 still occluded by this other person. There is no visual evidence within this video segment to suggest ID 6 left the area or was replaced by a different person; it is a clear instance of one person being visually blocked by another.",
+      "visual_evidence": "Person ID 6, wearing a dark jacket with white sleeves and light blue jeans, is standing at the counter from the beginning of the video. At approximately 0:09, another person (unidentified ID) walks from the bottom right of the frame directly in front of ID 6, completely blocking them from view. The video ends at 0:09 with ID 6 still occluded by this other person. There is no visual evidence within this video segment to suggest ID 6 left the area or was replaced by a different person; it is a clear instance of one person being visually blocked by another.",
+      "corrected_times": {
+        "6": 10.0
+      }
+    },
+    {
+      "confusion_id": 3,
+      "event_type": "occlusion",
+      "person_id": 13,
+      "timestamp": 11.15,
+      "ai_decision": "MERGE",
+      "same_person": true,
+      "ai_confidence": 1.0,
+      "ai_reasoning": "Person ID 13 disappears from view at approximately 00:09 in the video. They are occluded by another person (wearing a light-colored jacket and a dark hat) who walks directly in front of ID 13, completely blocking the view. Person ID 13 does not reappear within this specific video segment.",
+      "visual_evidence": "Person ID 13 disappears from view at approximately 00:09 in the video. They are occluded by another person (wearing a light-colored jacket and a dark hat) who walks directly in front of ID 13, completely blocking the view. Person ID 13 does not reappear within this specific video segment.",
+      "corrected_times": {
+        "13": 1.9
+      }
+    },
+    {
+      "confusion_id": 4,
+      "event_type": "occlusion",
+      "person_id": 10,
+      "timestamp": 11.2,
+      "ai_decision": "MERGE",
+      "same_person": true,
+      "ai_confidence": 0.8,
+      "ai_reasoning": "Person ID 10 (wearing a black jacket with 'Louis Vuitton' on the back and light blue jeans) is standing at the counter. At approximately 0:09.0s in the video, another person, wearing a light-colored jacket and a black hat, walks into the frame from the bottom center. This person moves directly in front of ID 10, completely obscuring ID 10 from the camera's view. ID 10 remains occluded until the end of this video segment at 0:09.7s and does not reappear within this specific clip.",
+      "visual_evidence": "Person ID 10 (wearing a black jacket with 'Louis Vuitton' on the back and light blue jeans) is standing at the counter. At approximately 0:09.0s in the video, another person, wearing a light-colored jacket and a black hat, walks into the frame from the bottom center. This person moves directly in front of ID 10, completely obscuring ID 10 from the camera's view. ID 10 remains occluded until the end of this video segment at 0:09.7s and does not reappear within this specific clip.",
+      "corrected_times": {
+        "10": 1.5
+      }
+    },
+    {
+      "confusion_id": 5,
+      "event_type": "occlusion",
+      "person_id": 13,
+      "timestamp": 11.6,
+      "ai_decision": "MERGE",
+      "same_person": true,
+      "ai_confidence": 0.9,
+      "ai_reasoning": "Person ID 13, wearing a black and white varsity-style jacket and light blue jeans, is standing at the counter. At approximately 0:08.5s in the video clip, another person (wearing a black top and light-colored skirt/pants, carrying a white bag) walks from the bottom right of the frame directly in front of ID 13. This second person completely blocks ID 13 from view. ID 13 reappears at approximately 0:09.1s as the second person moves past, revealing ID 13 still in the same position and wearing the same clothing.",
+      "visual_evidence": "Person ID 13, wearing a black and white varsity-style jacket and light blue jeans, is standing at the counter. At approximately 0:08.5s in the video clip, another person (wearing a black top and light-colored skirt/pants, carrying a white bag) walks from the bottom right of the frame directly in front of ID 13. This second person completely blocks ID 13 from view. ID 13 reappears at approximately 0:09.1s as the second person moves past, revealing ID 13 still in the same position and wearing the same clothing.",
+      "corrected_times": {
+        "13": 2.9
+      }
+    },
+    {
+      "confusion_id": 6,
+      "event_type": "occlusion",
+      "person_id": 10,
+      "timestamp": 11.65,
+      "ai_decision": "MERGE",
+      "same_person": true,
+      "ai_confidence": 1.0,
+      "ai_reasoning": "Person ID 10, wearing a black vest with white sleeves and light blue jeans, was standing at the counter looking at the display items. At approximately 00:08.8s, another person (ID 11, wearing a white top and black skirt) walked from the bottom right of the frame directly in front of ID 10, completely occluding them from view. ID 10 reappeared at approximately 00:09.2s, still in the same position and wearing the same clothes, as ID 11 continued to move past.",
+      "visual_evidence": "Person ID 10, wearing a black vest with white sleeves and light blue jeans, was standing at the counter looking at the display items. At approximately 00:08.8s, another person (ID 11, wearing a white top and black skirt) walked from the bottom right of the frame directly in front of ID 10, completely occluding them from view. ID 10 reappeared at approximately 00:09.2s, still in the same position and wearing the same clothes, as ID 11 continued to move past.",
+      "corrected_times": {
+        "10": 3.2
+      }
+    },
+    {
+      "confusion_id": 7,
+      "event_type": "occlusion",
+      "person_id": 18,
+      "timestamp": 15.3,
+      "ai_decision": "MERGE",
+      "same_person": true,
+      "ai_confidence": 0.95,
+      "ai_reasoning": "Person ID 18, wearing a black jacket with 'Louis Vuitton' on the back and light blue jeans, is observed standing at the counter from the beginning of the clip. At approximately 00:07, another person (P_occluder) wearing a white top, black skirt, and black hat begins to walk into the frame from the bottom-center. By 00:08, P_occluder has positioned herself directly in front of ID 18, completely obscuring ID 18 from the camera's view. ID 18 does not fully reappear within this video segment, but remains in the same location behind the occluding person, with parts of their clothing (jacket, jeans) still visible. The disappearance is due to being blocked by another person.",
+      "visual_evidence": "Person ID 18, wearing a black jacket with 'Louis Vuitton' on the back and light blue jeans, is observed standing at the counter from the beginning of the clip. At approximately 00:07, another person (P_occluder) wearing a white top, black skirt, and black hat begins to walk into the frame from the bottom-center. By 00:08, P_occluder has positioned herself directly in front of ID 18, completely obscuring ID 18 from the camera's view. ID 18 does not fully reappear within this video segment, but remains in the same location behind the occluding person, with parts of their clothing (jacket, jeans) still visible. The disappearance is due to being blocked by another person.",
+      "corrected_times": {
+        "18": 5.0
+      }
+    },
+    {
+      "confusion_id": 8,
+      "event_type": "occlusion",
+      "person_id": 22,
+      "timestamp": 17.5,
+      "ai_decision": "MERGE",
+      "same_person": true,
+      "ai_confidence": 1.0,
+      "ai_reasoning": "Person ID 22, wearing a black and white varsity-style jacket with 'Louis Vuitton' on the back, light blue jeans, and dark shoes, is continuously visible at the counter from the beginning of the video segment (17.0s) to the end (26.0s). They do not disappear from view due to occlusion or any other reason. Therefore, no disappearance or reappearance event, as described in the confusion details, is observed in this video. The person remains stationary at the counter throughout the entire segment.",
+      "visual_evidence": "Person ID 22, wearing a black and white varsity-style jacket with 'Louis Vuitton' on the back, light blue jeans, and dark shoes, is continuously visible at the counter from the beginning of the video segment (17.0s) to the end (26.0s). They do not disappear from view due to occlusion or any other reason. Therefore, no disappearance or reappearance event, as described in the confusion details, is observed in this video. The person remains stationary at the counter throughout the entire segment.",
+      "corrected_times": {
+        "22": 9.0
+      }
+    },
+    {
+      "confusion_id": 9,
+      "event_type": "occlusion",
+      "person_id": 22,
+      "timestamp": 17.8,
+      "ai_decision": "MERGE",
+      "same_person": true,
+      "ai_confidence": 1.0,
+      "ai_reasoning": "Person ID 22 (wearing a black jacket with 'Louis Vuitton' on the back and light blue jeans) is continuously visible at the counter from 17.0s until the end of the video segment at 26.0s. There is no observed disappearance or reappearance of ID 22 due to occlusion or any other reason within this video segment. The tracking data indicating a disappearance at 18.4s is not supported by visual evidence; ID 22 remained in view throughout the entire segment.",
+      "visual_evidence": "Person ID 22 (wearing a black jacket with 'Louis Vuitton' on the back and light blue jeans) is continuously visible at the counter from 17.0s until the end of the video segment at 26.0s. There is no observed disappearance or reappearance of ID 22 due to occlusion or any other reason within this video segment. The tracking data indicating a disappearance at 18.4s is not supported by visual evidence; ID 22 remained in view throughout the entire segment.",
+      "corrected_times": {
+        "22": 9.0
+      }
+    },
+    {
+      "confusion_id": 10,
+      "event_type": "occlusion",
+      "person_id": 22,
+      "timestamp": 18.45,
+      "ai_decision": "MERGE",
+      "same_person": true,
+      "ai_confidence": 1.0,
+      "ai_reasoning": "Person ID 22 (wearing a black and white varsity jacket, light blue jeans) is continuously visible at the counter from the beginning of the video (17.0s) to the end (26.0s). They do not disappear from view due to any obstruction (such as walking behind a shelf or being blocked by another person) or by leaving the frame. Therefore, no visual occlusion event occurred for ID 22 within this video segment, despite the tracking data indicating a brief disappearance.",
+      "visual_evidence": "Person ID 22 (wearing a black and white varsity jacket, light blue jeans) is continuously visible at the counter from the beginning of the video (17.0s) to the end (26.0s). They do not disappear from view due to any obstruction (such as walking behind a shelf or being blocked by another person) or by leaving the frame. Therefore, no visual occlusion event occurred for ID 22 within this video segment, despite the tracking data indicating a brief disappearance.",
+      "corrected_times": {
+        "22": 9.0
+      }
+    },
+    {
+      "confusion_id": 11,
+      "event_type": "occlusion",
+      "person_id": 24,
+      "timestamp": 19.0,
+      "ai_decision": "MERGE",
+      "same_person": true,
+      "ai_confidence": 1.0,
+      "ai_reasoning": "Person ID 24, wearing a black and white 'Louis Vuitton' jacket and light blue jeans, was standing at the counter. At approximately 00:02 (20.6s), another person wearing a white top, black skirt, and black head covering walked directly in front of ID 24, causing a brief but significant occlusion. ID 24's lower body was completely obscured, and their upper body was partially obscured. By 00:03 (21.6s), the occluding person had moved past, and ID 24 was fully visible again, still in the same position.",
+      "visual_evidence": "Person ID 24, wearing a black and white 'Louis Vuitton' jacket and light blue jeans, was standing at the counter. At approximately 00:02 (20.6s), another person wearing a white top, black skirt, and black head covering walked directly in front of ID 24, causing a brief but significant occlusion. ID 24's lower body was completely obscured, and their upper body was partially obscured. By 00:03 (21.6s), the occluding person had moved past, and ID 24 was fully visible again, still in the same position.",
+      "corrected_times": {
+        "24": 27.6
+      }
+    },
+    {
+      "confusion_id": 12,
+      "event_type": "occlusion",
+      "person_id": 24,
+      "timestamp": 20.1,
+      "ai_decision": "SEPARATE",
+      "same_person": false,
+      "ai_confidence": 1.0,
+      "ai_reasoning": "No person matching the description of ID 24 (disappearing briefly and reappearing) was observed in the provided video segment. Based on the provided tracking data (first seen: 18.6s, last seen before confusion: 20.1s in original recording time), ID 24 should have been visible from approximately 12:39:03.2 to 12:39:04.7 in this clip, then disappeared, and reappeared. However, all individuals visible in the segment remained continuously in view or entered the frame and remained visible until the end of the clip. No individual disappeared and reappeared as described for an occlusion event.",
+      "visual_evidence": "No person matching the description of ID 24 (disappearing briefly and reappearing) was observed in the provided video segment. Based on the provided tracking data (first seen: 18.6s, last seen before confusion: 20.1s in original recording time), ID 24 should have been visible from approximately 12:39:03.2 to 12:39:04.7 in this clip, then disappeared, and reappeared. However, all individuals visible in the segment remained continuously in view or entered the frame and remained visible until the end of the clip. No individual disappeared and reappeared as described for an occlusion event.",
+      "corrected_times": {
+        "24": 0.0
+      }
+    }
+  ]
+}

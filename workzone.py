@@ -5,6 +5,7 @@ Auto-saves to .env file
 
 import cv2
 import numpy as np
+import os
 import sys
 from config import Config
 
@@ -184,8 +185,7 @@ if __name__ == "__main__":
             sys.exit(1)
     else:
         video_path = sys.argv[1]
-    
-    import os
+
     if not os.path.exists(video_path):
         print(f"❌ Video not found: {video_path}")
         sys.exit(1)

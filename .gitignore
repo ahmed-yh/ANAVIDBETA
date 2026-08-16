@@ -1,5 +1,6 @@
 # Python
 __pycache__/
+.pytest_cache/
 *.py[cod]
 *$py.class
 *.so
@@ -29,6 +30,7 @@ ENV/
 .env
 anavid
 anavid/
+anavid_py311/
 
 
 # PyTorch/ML Models (LARGE FILES - DON'T COMMIT)
@@ -49,6 +51,9 @@ runs/
 weights/
 *.yaml
 *.cfg
+
+# ...but our own tracker config IS meant to be committed (used by queue_tracker.py)
+!trackers/*.yaml
 
 # Videos and Images (LARGE FILES)
 *.mp4
@@ -77,7 +82,12 @@ data/output/*.avi
 
 # Results/Outputs
 results/*.csv
+results/*.json
 results/*.png
 results/*.jpg
 results/*.txt
 data/output/
+
+# Demo data IS meant to be committed - it's what gets hosted (see demo_app.py)
+!demo_data/
+!demo_data/**
